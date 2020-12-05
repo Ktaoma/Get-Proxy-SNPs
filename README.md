@@ -1,8 +1,3 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
 # Update List 
 #### 04/12/63 : 17.30-20.30 (3 hours) <br>
 - [x] Check SNPs in summary statistic on GSA array. <br>
