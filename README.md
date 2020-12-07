@@ -10,10 +10,10 @@
 ![image](Freq_plot.png)
 
 #### 07/12/63 : 8.30-11.30,20.00-22.00 (5 hours)  <br>
-- [x] create pipeline
-![image](workflow.png)
-- [x] summarize data 
-![image](GSA_array_check.png)
+- [x] create pipeline <br>
+![image](workflow.png) <br>
+- [x] summarize data <br>
+![image](GSA_array_check.png)<br>
 - [x] Get the optimal proxy SNPs but some of them still have candidate (same dprim, same regulomedb, and same MAF)
 (file saved as result/proxy_SNPs_EAS_SAS.csv)
 
