@@ -11,21 +11,21 @@ detected_SAS <- fread("result/final_proxy_SAS.csv",header = T)[,13] %>% unique()
 detected_SAS$type <- "SAS"
 detected_EAS_SAS <- fread("result/final_proxy_EAS_SAS.csv",header = T)[,13] %>% unique()
 detected_EAS_SAS$type <- "EAS_SAS"
-all_detect <- rbind(detected_EAS,detected_EAS_SAS,detected_SAS) %>% select(type) %>% table() %>% melt()
+all_detect <- rbind(detected_EAS,detected_EAS_SAS,detected_SAS) %>% dplyr::select(type) %>% table() %>% melt()
 all_detect$Var1 <- "Detectable SNPs"
 
 ###explore not detect SNPs across reference
 not_detected_EAS <- fread("result/SNPs_not_detected_EAS.csv",header = T)
 not_detected_EAS_02 <- cSplit(not_detected_EAS,"data_out[1, 1]"," ") %>% 
-  select(`data_out[1, 1]_4`) %>% setnames("data_out[1, 1]_4","type")
+  dplyr::select(`data_out[1, 1]_4`) %>% setnames("data_out[1, 1]_4","type")
 not_detected_EAS_02$ref <- "EAS"
 not_detected_SAS <- fread("result/SNPs_not_detected_SAS.csv",header = T)
 not_detected_SAS_02 <- cSplit(not_detected_SAS,"data_out[1, 1]"," ") %>% 
-  select(`data_out[1, 1]_4`) %>% setnames("data_out[1, 1]_4","type")
+  dplyr::select(`data_out[1, 1]_4`) %>% setnames("data_out[1, 1]_4","type")
 not_detected_SAS_02$ref <- "SAS"
 not_detected_EAS_SAS <- fread("result/SNPs_not_detected_EAS_SAS.csv",header = T)
 not_detected_EAS_SAS_02 <- cSplit(not_detected_EAS_SAS,"data_out[1, 1]"," ") %>% 
-  select(`data_out[1, 1]_4`) %>% setnames("data_out[1, 1]_4","type")
+  dplyr::select(`data_out[1, 1]_4`) %>% setnames("data_out[1, 1]_4","type")
 not_detected_EAS_SAS_02$ref <- "EAS_SAS"
 
 #combine
