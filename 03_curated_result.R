@@ -72,7 +72,7 @@ rank_regulome_db <- data.frame(RegulomeDB = c("1a","1b","1c","1d","1e","1f","2a"
 # filter proxy SNPs with lowest MAF  (lowest MAF, more effect )
 
 df_rank <- inner_join(rank_regulome_db,Proxy_SNP_avialable_in_GSA,by="RegulomeDB") %>% 
-  filter(Dprime > 0.7,RS_Number != ".")  %>% 
+  filter(Dprime > 0.9,RS_Number != ".")  %>% 
   group_by(query) %>% 
   slice_min(order_by = rank, n = 1) %>%
   slice_min(order_by = MAF, n = 1) %>% as.data.frame()
@@ -93,6 +93,5 @@ all_result <- rbind(df_rank_final %>% as.data.frame(),SNP_avialable_in_GSA_final
 names(all_result) <- c("RegulomeDB","Proxy SNPs","Coord","Ref/Alt","MAF",
                        "Dprime","query variant","rsid","cat","result")
 
-all_result$query %>% unique() %>% length()
 write.csv(all_result,"proxy_SNPs_EAS_SAS.csv")
 
