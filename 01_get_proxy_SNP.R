@@ -6,10 +6,9 @@ library(splitstackshape)
 library(ggplot2)
 
 #CHeck if there any SNP on GSA array
-GSA_df <- fread("input/GSA-24v3-0_A1_b151_rsids.txt")
 df_query <- readxl::read_xlsx("input/Nature-2017-supp-PRS_313SNPs.xlsx")  %>% as.data.frame()
 df_query$id <- paste0(df_query$Chromosome,":",df_query$Positionb) 
-df_query %>%  filter(id %in% GSA_df$Name) #No SNPs in summary statistic available in GSA array at all
+
 
 #input list of rsID (example rs1234) and chr:position (example chr1:1234567)
 df_query_list <- paste0("chr",df_query$Chromosome,":",df_query$Positionb) 
